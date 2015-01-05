@@ -5,8 +5,7 @@ function replace_array_walk($data = [] , $fields = [])
 	array_walk(
 	    $data, 
 	    function($v, $k) use (&$ret,$fields){ 
-	        $key = mb_convert_encoding($k, 'GBK', 'UTF-8');
-	        $key = $fields[$k];
+	        $key = $fields[$k]?$fields[$k]:$k;
 	        $ret[$key] = $v;
 	    }
 	);
