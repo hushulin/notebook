@@ -1,1 +1,14 @@
 <?php
+function replace_array_walk($data = [] , $fields = [])
+{
+	$ret = [];
+	array_walk(
+	    $data, 
+	    function($v, $k) use (&$ret,$fields){ 
+	        $key = mb_convert_encoding($k, 'GBK', 'UTF-8');
+	        $key = $fields[$k];
+	        $ret[$key] = $v;
+	    }
+	);
+	return $ret;
+}
