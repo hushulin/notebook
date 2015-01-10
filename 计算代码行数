@@ -1,0 +1,77 @@
+<?php
+
+/**
+
+ * @name count_lines.php
+
+ * @date Mon Nov 30 20:45:50 CST 2009
+
+ * @copyright 马永占(MyZ)
+
+ * @author 马永占(MyZ) 
+
+ * @link http://blog.csdn.net/mayongzhan/
+
+ */
+
+ 
+
+set_time_limit(0);
+
+ 
+
+//计算行数
+
+function countLines($file) {
+
+       return count(file($file));
+
+}
+
+ 
+
+//递归遍历文件夹
+
+function traverseDir($dir) {
+
+       $lines = 0;
+
+       $dir .= '/';
+
+       if ($dh = opendir($dir)) {
+
+               while (($file = readdir($dh)) !== false) {
+
+                    if ($file != '.' && $file != '..') {
+
+                           if (is_dir($dir.$file.'/')) {
+
+                                  $lines += traverseDir($dir.$file);
+
+                           }
+
+                           else {
+
+                                  $lines += countLines($dir.$file);
+
+                           }
+
+                    }
+
+        }
+
+        closedir($dh);
+
+       }
+
+       return $lines;
+
+}
+
+ 
+
+$dirName = '/workspace/test';
+
+echo traverseDir($dirName);
+
+?>
