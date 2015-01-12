@@ -16,3 +16,28 @@ function dd()
 {
 	array_map(function($x) { var_dump($x); }, func_get_args()); die;
 }
+
+public function item_merge($value='')
+{
+	# code...
+}
+
+public function item_sort($value='')
+{
+	# code...
+}
+
+public function item_rely($value='')
+{
+	# code...
+}
+
+public function item_days($value='')
+{
+	# code...
+}
+
+public function item_add($value='')
+{
+	# code...
+}
