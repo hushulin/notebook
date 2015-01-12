@@ -20,11 +20,19 @@ function dd()
 public function item_merge($value='')
 {
 	# code...
+	# use group by from mysql 
+	# use 
+	// $a = array_map(null,$arr1,$arr2,$arr3，......);
+	// foreach($a as &$val) {
+	//     $val = call_user_func_array('array_merge',array_filter($val));
+	// }
+	// print_r($a);
 }
 
 public function item_sort($value='')
 {
 	# code...
+	# use php array_multisort(arr)
 }
 
 public function item_rely($value='')
