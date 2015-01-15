@@ -1,0 +1,54 @@
+<?php 
+$item = [''];
+$data = [];
+$val = [];
+
+foreach ($item as $key => $value) {
+	$data[$value['worktype']][] = $value;
+}
+
+foreach ($data as $key => $value) {
+	foreach ($value as $k => $v) {
+		if ($k == 0) {
+			$val[] = $v;
+		}else {
+			if (count($v['relys']) == 0) {
+				$v['relys'] = $value[$k-1]['id'];
+			}else {
+				$v['relys'] = array_push($v['relys'], $value[$k-1]['id']);
+			}
+			$val[] = $v;
+		}
+	}
+}
+
+
+function revis($data = [])
+{
+	static $a = [];
+
+	if (count($data) == 0) {
+		return ;
+	}
+
+	foreach ($data as $key => $value) {
+		if ($val = relys($value)) {
+			revis($val);
+		}else {
+			$a[] = $value;
+
+			unset($data[$key]);
+			revis($data);
+		}
+	}
+
+	return $a;
+}
+
+$factorial = function( $n ) use ( &$factorial ) {
+    if( $n == 1 ) return 1;
+    return $factorial( $n - 1 ) * $n;
+};
+
+
+return $a;
